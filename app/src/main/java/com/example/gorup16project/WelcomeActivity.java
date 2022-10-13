@@ -4,5 +4,5 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
+public class WelcomeActivity extends AppCompatActivity  {
 }
