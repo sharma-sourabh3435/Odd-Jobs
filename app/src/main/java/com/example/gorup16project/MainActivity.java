@@ -63,8 +63,8 @@ public class MainActivity extends AppCompatActivity{
         });
     }
     private void switchActivities() {
-        Intent switchActivityIntent = new Intent(MainActivity.this, CreateAccount.class);
-        startActivity(switchActivityIntent);
+        Intent switchToCreate = new Intent(MainActivity.this, CreateAccount.class);
+        startActivity(switchToCreate);
     }
 
 
