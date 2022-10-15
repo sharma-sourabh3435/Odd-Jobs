@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Gorup16Project</string>
+    <string name="EMPTY_STRING" />
 </resources>
