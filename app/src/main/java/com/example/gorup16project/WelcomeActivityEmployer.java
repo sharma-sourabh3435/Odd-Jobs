@@ -7,11 +7,11 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class WelcomeActivity extends AppCompatActivity {
+public class WelcomeActivityEmployer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.welcome_employee);
+        setContentView(R.layout.welcome_employer);
 
 
         Button switchToLogin = findViewById(R.id.Logout);
@@ -24,7 +24,8 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void switchActivities() {
-        Intent switchToLogin = new Intent(WelcomeActivity.this, MainActivity.class);
+        Intent switchToLogin = new Intent(WelcomeActivityEmployer.this,
+                MainActivity.class);
         startActivity(switchToLogin);
     }
 }
