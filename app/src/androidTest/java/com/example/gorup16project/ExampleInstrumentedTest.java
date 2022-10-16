@@ -2,6 +2,7 @@ package com.example.gorup16project;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -57,6 +58,14 @@ public class ExampleInstrumentedTest {
         onView(withId(R.id.editTextTextEmailAddress3)).check(matches(withText(R.string.EMPTY_STRING)));
         onView(withId(R.id.editTextTextPassword3)).check(matches(withText(R.string.EMPTY_STRING)));
     }
+    @Test
+    public void checkIfPasswordIsVisible() {
+        onView(withId(R.id.editTextTextPassword3)).perform(typeText("123"));
+        onView(withId(R.id.checkBox)).perform(click());
+        onView(withId(R.id.editTextTextPassword3)).check(matches(withText(R.string.PASSWORD)));
+
+    }
+
 
 
 
