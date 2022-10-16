@@ -5,7 +5,8 @@
       <map>
         <entry key="..\:/Users/anast/git/CSCI3130/group16/group16project/app/src/main/res/drawable/ic_launcher_background.xml" value="0.121" />
         <entry key="..\:/Users/anast/git/CSCI3130/group16/group16project/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/anast/git/CSCI3130/group16/group16project/app/src/main/res/layout/create_account.xml" value="0.14427083333333332" />
+        <entry key="..\:/Users/anast/git/CSCI3130/group16/group16project/app/src/main/res/layout/create_account.xml" value="0.2" />
+        <entry key="..\:/Users/anast/git/CSCI3130/group16/group16project/app/src/main/res/layout/welcome_employee.xml" value="0.1644021739130435" />
       </map>
     </option>
   </component>
