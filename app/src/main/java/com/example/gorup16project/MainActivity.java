@@ -39,10 +39,14 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button loginButton =
+
         showcheck_btn = findViewById(R.id.checkBox);
         password = findViewById(R.id.editTextTextPassword3);
 
+        firebaseDB = FirebaseDatabase.getInstance();
+        firebaseDBRef = firebaseDB.getReference("server/saving-data/fireblog/posts");
+
+        
         showcheck_btn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -58,6 +62,8 @@ public class MainActivity extends AppCompatActivity{
         switchToSecondActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 switchActivities();
             }
         });
