@@ -1,5 +1,6 @@
 package com.example.gorup16project;
 
+
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.typeText;
@@ -31,7 +32,6 @@ public class ExampleInstrumentedTest {
 
     @Rule
     public ActivityScenarioRule<MainActivity> myRule = new ActivityScenarioRule<>(MainActivity.class);
-
 
 
 //    @BeforeClass
@@ -66,8 +66,26 @@ public class ExampleInstrumentedTest {
 
     }
 
+//    @Test
+//    public void checkIfMovedToCreateAccount() {
+//        onView(withId(R.id.buttonCreateAccount)).perform(click());
+//        intended(hasComponent(CreateAccount.class.getName()));
+//    }
 
-
-
+        @Test
+    public void checkIfMovedToCreateAccount() {
+        onView(withId(R.id.buttonCreateAccount)).perform(click());
+            onView(withId(R.id.editTextTextEmailAddress2)).check(matches(withText(R.string.EMPTY_STRING)));
+            onView(withId(R.id.editTextTextPersonName)).check(matches(withText(R.string.EMPTY_STRING)));
+            onView(withId(R.id.editTextTextPassword)).check(matches(withText(R.string.EMPTY_STRING)));
+            onView(withId(R.id.editTextTextPersonName3)).check(matches(withText(R.string.EMPTY_STRING)));
+    }
 
 }
+
+
+
+
+
+
+
