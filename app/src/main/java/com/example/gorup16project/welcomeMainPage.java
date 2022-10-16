@@ -6,12 +6,12 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class welcomeMain extends AppCompatActivity {
+public class welcomeMainPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.welcome_main);
+        setContentView(R.layout.welcome_mainpage);
 
         //button for employee page
         Button continueAsEmployee = findViewById(R.id.toEmployeePage);
@@ -24,12 +24,12 @@ public class welcomeMain extends AppCompatActivity {
 
     //switch to employee's login page
     private void switchActivities1(){
-        Intent continueAsEmployee = new Intent(welcomeMain.this, WelcomeActivity.class);
+        Intent continueAsEmployee = new Intent(welcomeMainPage.this, WelcomeActivity.class);
         startActivity(continueAsEmployee);
     }
     //switch to employer's login page
     private void switchActivities2(){
-        Intent continueAsEmployer = new Intent(welcomeMain.this, WelcomeActivityEmployer.class);
+        Intent continueAsEmployer = new Intent(welcomeMainPage.this, WelcomeActivityEmployer.class);
         startActivity(continueAsEmployer);
     }
 }
