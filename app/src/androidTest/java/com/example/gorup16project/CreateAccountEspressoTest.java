@@ -30,10 +30,7 @@ public class CreateAccountEspressoTest {
 
 
 
-//    @BeforeClass
-//    public static void setup() {
-//        Intents.init();
-//    }
+
 
     @AfterClass
     public static void tearDown() {
