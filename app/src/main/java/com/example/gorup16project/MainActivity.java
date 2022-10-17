@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity{
         password = findViewById(R.id.editTextTextPassword3);
 
         firebaseDB = FirebaseDatabase.getInstance();
-        firebaseDBRef = firebaseDB.getReference("server/saving-data/fireblog/posts");
+        firebaseDBRef = firebaseDB.getReference();
 
         
         showcheck_btn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
