@@ -77,7 +77,7 @@ public class CreateAccountEspressoTest {
 
     @Test
     public void createAccountAndLogin() {
-        //init();
+        init();
         createAccount();
 
         onView(withId(R.id.editTextTextEmailAddress3)).perform(typeText("123@email.ca"));
