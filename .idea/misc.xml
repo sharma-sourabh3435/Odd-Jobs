@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/aidan/git/csci3130/group16project/app/src/main/res/layout/welcome_employee.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/aidan/git/csci3130/group16project/app/src/main/res/layout/welcome_employer.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/aidan/git/csci3130/group16project/app/src/main/res/layout/welcome_mainpage.xml" value="0.264" />
         <entry key="..\:/Users/anast/git/CSCI3130/group16/group16project/app/src/main/res/drawable/ic_launcher_background.xml" value="0.121" />
         <entry key="..\:/Users/anast/git/CSCI3130/group16/group16project/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/anast/git/CSCI3130/group16/group16project/app/src/main/res/layout/create_account.xml" value="0.2" />
