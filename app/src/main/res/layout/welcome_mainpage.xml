@@ -1,48 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
     <!--For Title -->
-    <TextView
-        android:id="@+id/welcomeTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="248dp"
-        android:paddingVertical="20dp"
-        android:text="@string/welcomeMainPageTitle"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
     <!--For Employee -->
+
+    <!--For Employer -->
+
     <Button
         android:id="@+id/toEmployeePage"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="@string/employeeContinueButton"
+        android:layout_height="48dp"
+        android:layout_marginBottom="28dp"
+        android:text="Employee"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/toEmployerPage"
         app:layout_constraintEnd_toEndOf="@+id/toEmployerPage" />
 
-    <!--For Employer -->
     <Button
         android:id="@+id/toEmployerPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="190dp"
-        android:text="@string/employerContinueButton"
+        android:layout_marginBottom="308dp"
+        android:text="Employer"
 
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/employeeDecision"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="134dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="134dp"
+        android:layout_marginBottom="44dp"
+        android:text="Chose One to Continue"
+        app:layout_constraintBottom_toTopOf="@+id/toEmployeePage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
