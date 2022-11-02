@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C8C7C7">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="357dp"
+        android:layout_height="263dp"
+        android:background="#A5A4A5"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Logout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.506">
+
+        <EditText
+            android:id="@+id/editTextTextPersonName2"
+            android:layout_width="347dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#6E6C6C"
+            android:ems="10"
+            android:hint="Job Title"
+            android:inputType="textPersonName"
+            android:textColor="#FFFFFF"
+            android:textColorHint="@color/white" />
+
+        <EditText
+            android:id="@+id/editTextNumber"
+            android:layout_width="353dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#6E6C6C"
+            android:ems="10"
+            android:hint="Pay"
+            android:inputType="number"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName5"
+            android:layout_width="355dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#6E6C6C"
+            android:ems="10"
+            android:hint="Location"
+            android:inputType="textPersonName"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName6"
+            android:layout_width="356dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#6E6C6C"
+            android:ems="10"
+            android:hint="Duration"
+            android:inputType="textPersonName"
+            android:shadowColor="@color/white"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+
+        <Button
+            android:id="@+id/postJobBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:backgroundTint="@android:color/background_light"
+            android:text="Post"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="142dp"
+        android:layout_marginTop="173dp"
+        android:layout_marginEnd="143dp"
+        android:layout_marginBottom="32dp"
+        android:text="Enter Job Credentials"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/back2employer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginBottom="155dp"
+        android:backgroundTint="#A5A4A5"
+        android:text="Back"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/logoutOfPosting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="205dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="155dp"
+        android:backgroundTint="#A5A4A5"
+        android:text="LOGOUT"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/back2employer"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

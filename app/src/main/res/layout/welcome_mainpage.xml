@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#C8C7C7">
 
 
     <!--For Title -->
@@ -19,6 +20,7 @@
         android:layout_height="48dp"
         android:layout_marginBottom="28dp"
         android:text="Employee"
+        android:backgroundTint="#A5A4A5"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/toEmployerPage"
         app:layout_constraintEnd_toEndOf="@+id/toEmployerPage" />
@@ -27,6 +29,7 @@
         android:id="@+id/toEmployerPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#A5A4A5"
         android:layout_marginBottom="308dp"
         android:text="Employer"
 
@@ -36,20 +39,19 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/employeeDecision"
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="134dp"
-        android:layout_marginTop="250dp"
-        android:layout_marginEnd="134dp"
-        android:layout_marginBottom="44dp"
-        android:text="Chose One to Continue"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="251dp"
+        android:layout_marginEnd="176dp"
+        android:layout_marginBottom="28dp"
+        android:text="Chose One To Continue!"
         app:layout_constraintBottom_toTopOf="@+id/toEmployeePage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        tools:text="Chose One To Continue!" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
