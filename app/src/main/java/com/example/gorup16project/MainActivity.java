@@ -2,6 +2,7 @@ package com.example.gorup16project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
@@ -28,18 +29,19 @@ public class MainActivity extends AppCompatActivity{
 
     CheckBox showcheck_btn;
     EditText password;
-    Button switchToSecondActivity;
+    Button switchToSecondActivity, loginButton;
 
-    private static final String url = "https://group16-4df08-default-rtdb.firebaseio.com/";
+    private static final String URL = "https://group16-4df08-default-rtdb.firebaseio.com/";
     private FirebaseDatabase firebaseDB;
     private DatabaseReference firebaseDBRef;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button loginButton =
+
         showcheck_btn = findViewById(R.id.checkBox);
         password = findViewById(R.id.editTextTextPassword3);
 
@@ -61,7 +63,18 @@ public class MainActivity extends AppCompatActivity{
                 switchActivities();
             }
         });
+
+         loginButton = findViewById(R.id.buttonLogin);
+         //loginButton.setOnClickListener(view -> switchToActivites2());
+
+
     }
+
+    private void switchToActivites2() {
+        Intent switchToCreate = new Intent(MainActivity.this, welcomeMainPage.class);
+        startActivity(switchToCreate);
+    }
+
     private void switchActivities() {
         Intent switchToCreate = new Intent(MainActivity.this, CreateAccount.class);
         startActivity(switchToCreate);
