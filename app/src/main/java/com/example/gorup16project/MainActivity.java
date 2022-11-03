@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void switchToActivites2() {
-        Intent switchToCreate = new Intent(MainActivity.this, welcomeMainPage.class);
+        Intent switchToCreate = new Intent(MainActivity.this, PayPal.class);
         startActivity(switchToCreate);
     }
 
