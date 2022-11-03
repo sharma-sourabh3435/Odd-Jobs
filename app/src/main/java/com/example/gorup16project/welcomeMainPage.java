@@ -6,12 +6,26 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class welcomeMainPage extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
+    Button logout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome_mainpage);
+
+        logout = findViewById(R.id.logoutButton);
+        mAuth = FirebaseAuth.getInstance();
+
+        logout.setOnClickListener(view -> {
+            mAuth.signOut();
+            startActivity(new Intent(welcomeMainPage.this, MainActivity.class));
+        });
 
         //button for employee page
         Button continueAsEmployee = findViewById(R.id.toEmployeePage);
