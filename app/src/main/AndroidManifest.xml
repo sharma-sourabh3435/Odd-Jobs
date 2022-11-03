@@ -5,6 +5,11 @@
     <!--firebase authentication-->
     <uses-permission android:name="android.permission.INTERNET"/>
 
+<!-- Google Maps permissions -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -27,6 +32,15 @@
             android:exported="true"></activity>
         <activity android:name=".PayPal"
             android:exported="true"></activity>
+        <activity android:name=".MapsActivity"
+            android:exported="true"></activity>
+
+<!--        API key-->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
