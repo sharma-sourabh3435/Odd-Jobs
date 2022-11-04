@@ -53,17 +53,24 @@ public class CreateAccount extends AppCompatActivity {
                 }
 
                 else {
-                    mAuth.createUserWithEmailAndPassword(em, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    mAuth.createUserWithEmailAndPassword(em, pass).
+                            addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
+
                             if(task.isSuccessful()) {
-                                Toast.makeText(CreateAccount.this, "user registered successfully",
+                                FirebaseUser currentUser = mAuth.getCurrentUser();
+                                Toast.makeText(CreateAccount.this, "user registered" +
+                                                " successfully",
                                         Toast.LENGTH_SHORT).show();
                                 //take user to login page
-                                startActivity(new Intent(CreateAccount.this, MainActivity.class));
+                                startActivity(new Intent(CreateAccount.this,
+                                        MainActivity.class));
                             }
                             else {
-                                Toast.makeText(CreateAccount.this, "Boo" + task.getException().getMessage(),
+                                Toast.makeText(CreateAccount.this, "Boo" +
+                                                task.getException().getMessage(),
                                         Toast.LENGTH_SHORT).show();
                             }
                         }
