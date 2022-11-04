@@ -25,6 +25,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Objects;
+
 /**
  * IDs for reference
  * textView2
@@ -97,16 +99,20 @@ public class MainActivity extends AppCompatActivity{
                  password.requestFocus();
              }
              else {
-                 mAuth.signInWithEmailAndPassword(em, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                 mAuth.signInWithEmailAndPassword(em, pass).addOnCompleteListener(this,
+                         new OnCompleteListener<AuthResult>() {
                      @Override
                      public void onComplete(@NonNull Task<AuthResult> task) {
                          if (task.isSuccessful()) {
+                             FirebaseUser currentUser = mAuth.getCurrentUser();
                              Toast.makeText(MainActivity.this, "user login successful",
                                      Toast.LENGTH_SHORT).show();
                              startActivity(new Intent(MainActivity.this, welcomeMainPage.class));
+
                          }
                          else {
-                             Toast.makeText(MainActivity.this, "Boo" + task.getException().getMessage(),
+                             Toast.makeText(MainActivity.this, "Boo" +
+                                             Objects.requireNonNull(task.getException()).getMessage(),
                                      Toast.LENGTH_SHORT).show();
                          }
                      }
