@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity{
                          if (task.isSuccessful()) {
                              Toast.makeText(MainActivity.this, "user login successful",
                                      Toast.LENGTH_SHORT).show();
-                             switchToActivites2();
+                             startActivity(new Intent(MainActivity.this, welcomeMainPage.class));
                          }
                          else {
                              Toast.makeText(MainActivity.this, "Boo" + task.getException().getMessage(),

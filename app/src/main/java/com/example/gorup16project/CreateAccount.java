@@ -60,7 +60,7 @@ public class CreateAccount extends AppCompatActivity {
                                 Toast.makeText(CreateAccount.this, "user registered successfully",
                                         Toast.LENGTH_SHORT).show();
                                 //take user to login page
-                                switchActivities();
+                                startActivity(new Intent(CreateAccount.this, MainActivity.class));
                             }
                             else {
                                 Toast.makeText(CreateAccount.this, "Boo" + task.getException().getMessage(),
