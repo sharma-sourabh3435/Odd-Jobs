@@ -23,10 +23,23 @@ public class WelcomeActivity extends AppCompatActivity {
                 switchActivities();
             }
         });
+
+        Button switchToPreferences = findViewById(R.id.setPreferences);
+        switchToPreferences.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switchActivities2();
+            }
+        });
     }
 
     private void switchActivities() {
         Intent switchToLogin = new Intent(WelcomeActivity.this, MainActivity.class);
         startActivity(switchToLogin);
+    }
+
+    private void switchActivities2() {
+        Intent switchToPreferences = new Intent(WelcomeActivity.this, SetPreferencesEmployee.class);
+        startActivity(switchToPreferences);
     }
 }

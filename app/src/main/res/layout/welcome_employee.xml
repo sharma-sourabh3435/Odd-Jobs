@@ -14,14 +14,26 @@
         android:layout_marginStart="306dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="646dp"
-        android:backgroundTint="#A5A4A5"
         android:text="Logout"
+        android:backgroundTint="#A5A4A5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/setPreferences"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="116dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="#A5A4A5"
+        android:text="Set Preferences"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toStartOf="@+id/Logout" />
+
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="362dp"
         android:layout_height="200dp"
         android:layout_marginStart="24dp"
@@ -109,5 +121,7 @@
             android:textColor="@color/black" />
 
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

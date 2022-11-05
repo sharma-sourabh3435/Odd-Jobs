@@ -60,6 +60,7 @@
             android:backgroundTint="#6E6C6C"
             android:ems="10"
             android:hint="Duration"
+            android:layout_marginHorizontal="16dp"
             android:inputType="textPersonName"
             android:shadowColor="@color/white"
             android:textColor="@color/white"
