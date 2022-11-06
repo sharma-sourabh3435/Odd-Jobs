@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C8C7C7"
+    android:backgroundTint="#C8C7C7">
+
+    <Button
+        android:id="@+id/back2employee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="44dp"
+        android:backgroundTint="#A5A4A5"
+        android:text="Back"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="364dp"
+        android:layout_height="528dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="128dp"
+        android:background="#A5A4A5"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/JobPreferences"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:text="Job Preferences"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextJobTypePreference"
+            android:layout_width="267dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:hint="Name"
+            android:backgroundTint="#6E6C6C"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"/>
+
+        <Button
+            android:id="@+id/addPreference"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/background_light"
+            android:minHeight="48dp"
+            android:text="Add Preference"
+            android:layout_marginHorizontal="16dp"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/clearPreferences"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/background_light"
+            android:minHeight="48dp"
+            android:text="Clear Preferences"
+            android:layout_marginHorizontal="16dp"
+            android:textColor="@color/black" />
+
+        <ListView
+            android:id="@+id/jobPreferencesLV"
+            android:layout_width="match_parent"
+            android:layout_height="301dp"
+            android:layout_marginHorizontal="16dp"
+            android:background="#D3D3D3" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

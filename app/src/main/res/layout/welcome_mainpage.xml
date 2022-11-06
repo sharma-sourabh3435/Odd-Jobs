@@ -19,8 +19,8 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginBottom="28dp"
-        android:text="Employee"
         android:backgroundTint="#A5A4A5"
+        android:text="Employee"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/toEmployerPage"
         app:layout_constraintEnd_toEndOf="@+id/toEmployerPage" />
@@ -29,8 +29,8 @@
         android:id="@+id/toEmployerPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#A5A4A5"
         android:layout_marginBottom="308dp"
+        android:backgroundTint="#A5A4A5"
         android:text="Employer"
 
         android:textSize="16sp"
@@ -52,6 +52,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Chose One To Continue!" />
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="57dp"
+        android:text="Logout"
+        app:layout_constraintStart_toStartOf="@+id/toEmployerPage"
+        app:layout_constraintTop_toBottomOf="@+id/toEmployerPage" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
