@@ -1,5 +1,6 @@
 package com.example.gorup16project;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -12,9 +13,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * IDs for reference
@@ -40,6 +45,8 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        connectToFirebase();
+        writeToDatabase();
 
 
         showcheck_btn = findViewById(R.id.checkBox);
@@ -81,6 +88,14 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
+    private void connectToFirebase(){
+        firebaseDB = FirebaseDatabase.getInstance(URL);
+        firebaseDBRef = firebaseDB.getReference("path");
+    }
+
+    private void writeToDatabase(){
+        firebaseDBRef.setValue("TestMessage");
+    }
 
 }
 
