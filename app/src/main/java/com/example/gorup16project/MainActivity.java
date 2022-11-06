@@ -45,9 +45,6 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        connectToFirebase();
-        writeToDatabase();
-
 
         showcheck_btn = findViewById(R.id.checkBox);
         password = findViewById(R.id.editTextTextPassword3);
