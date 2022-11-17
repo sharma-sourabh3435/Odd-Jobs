@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
 
@@ -55,7 +56,6 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         showcheck_btn = findViewById(R.id.checkBox);
         password = findViewById(R.id.editTextTextPassword3);
@@ -147,6 +147,14 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
+    private void connectToFirebase(){
+        firebaseDB = FirebaseDatabase.getInstance(URL);
+        firebaseDBRef = firebaseDB.getReference("path");
+    }
+
+    private void writeToDatabase(){
+        firebaseDBRef.setValue("TestMessage");
+    }
 
 }
 
