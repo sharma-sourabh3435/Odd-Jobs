@@ -51,6 +51,36 @@ public class MainActivityTest {
         onView(withId(R.id.buttonCreateAccount)).perform(click());
         intended(hasComponent(CreateAccount.class.getName()));
     }
+    @Test
+    public void checkifCreateAccountPassowrdVisible(){
+        init();
+        onView(withId(R.id.buttonCreateAccount)).perform(click());
+        onView(withId(R.id.editTextTextPassword)).check(matches(withText(R.string.EMPTY_STRING)));
+
+    }
+    @Test
+    public void checkifCreateAccountEmailVisible(){
+        init();
+        onView(withId(R.id.buttonCreateAccount)).perform(click());
+        onView(withId(R.id.editTextTextEmailAddress2)).check(matches(withText(R.string.EMPTY_STRING)));
+
+    }
+    @Test
+    public void checkifFirstAndLastNameVisible(){
+        init();
+        onView(withId(R.id.buttonCreateAccount)).perform(click());
+        onView(withId(R.id.editTextTextPersonName)).check(matches(withText(R.string.EMPTY_STRING)));
+        onView(withId(R.id.editTextTextPersonName3)).check(matches(withText(R.string.EMPTY_STRING)));
+
+    }
+    @Test
+    public void checkIfLoginButtonWorks() {
+        init();
+        onView(withId(R.id.buttonCreateAccount)).perform(click());
+        intended(hasComponent(CreateAccount.class.getName()));
+        onView(withId(R.id.backToLoginButton)).perform(click());
+        intended(hasComponent(MainActivity.class.getName()));
+    }
 
 }
 
