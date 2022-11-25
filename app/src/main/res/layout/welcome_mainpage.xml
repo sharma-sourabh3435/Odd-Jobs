@@ -59,6 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:layout_marginTop="57dp"
+        android:backgroundTint="#A5A4A5"
         android:text="Logout"
         app:layout_constraintStart_toStartOf="@+id/toEmployerPage"
         app:layout_constraintTop_toBottomOf="@+id/toEmployerPage" />
