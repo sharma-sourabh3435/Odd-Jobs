@@ -1,5 +1,7 @@
 package com.example.gorup16project;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +11,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -22,6 +25,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -46,7 +51,6 @@ public class MainActivity extends AppCompatActivity{
     TextView password;
 
 
-    private static final String URL = "https://group16-4df08-default-rtdb.firebaseio.com/";
     private FirebaseDatabase firebaseDB;
     private DatabaseReference firebaseDBRef;
     private FirebaseAuth mAuth;
@@ -60,8 +64,9 @@ public class MainActivity extends AppCompatActivity{
         showcheck_btn = findViewById(R.id.checkBox);
         password = findViewById(R.id.editTextTextPassword3);
         email = findViewById(R.id.editTextTextEmailAddress3);
-
         mAuth = FirebaseAuth.getInstance();
+        firebaseDB = FirebaseDatabase.getInstance(Config.FIREBASE_URL);
+        firebaseDBRef = firebaseDB.getReference();
 
         //Check and Uncheck the password on login page
         showcheck_btn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -104,10 +109,14 @@ public class MainActivity extends AppCompatActivity{
                      @Override
                      public void onComplete(@NonNull Task<AuthResult> task) {
                          if (task.isSuccessful()) {
+
                              FirebaseUser currentUser = mAuth.getCurrentUser();
-                             Toast.makeText(MainActivity.this, "user login successful",
+
+                             Toast.makeText(MainActivity.this, "User: "+firebaseDBRef.child("users").child("name").get() +"login successful",
                                      Toast.LENGTH_SHORT).show();
                              startActivity(new Intent(MainActivity.this, welcomeMainPage.class));
+                             connectToFirebase();
+                             writeToDatabase();
 
                          }
                          else {
@@ -148,13 +157,14 @@ public class MainActivity extends AppCompatActivity{
 
 
     private void connectToFirebase(){
-        firebaseDB = FirebaseDatabase.getInstance(URL);
-        firebaseDBRef = firebaseDB.getReference("path");
+        firebaseDB = FirebaseDatabase.getInstance(Config.FIREBASE_URL);
+        firebaseDBRef = firebaseDB.getReference();
     }
 
     private void writeToDatabase(){
-        firebaseDBRef.setValue("TestMessage");
+
     }
+
 
 }
 

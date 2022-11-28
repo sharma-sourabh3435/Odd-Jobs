@@ -49,9 +49,9 @@ public class CreateAccountEspressoTest {
     @Test
     public void checkIfCreateAccountPageIsVisible() {
         onView(withId(R.id.editTextTextEmailAddress2)).check(matches(withText(R.string.EMPTY_STRING)));
-        onView(withId(R.id.editTextTextPersonName)).check(matches(withText(R.string.EMPTY_STRING)));
+        onView(withId(R.id.createUsername)).check(matches(withText(R.string.EMPTY_STRING)));
         onView(withId(R.id.editTextTextPassword)).check(matches(withText(R.string.EMPTY_STRING)));
-        onView(withId(R.id.editTextTextPersonName3)).check(matches(withText(R.string.EMPTY_STRING)));
+        //onView(withId(R.id.editTextTextPersonName3)).check(matches(withText(R.string.EMPTY_STRING)));
 
     }
 
@@ -65,8 +65,8 @@ public class CreateAccountEspressoTest {
     @Test
     public void createAccount() {
         init();
-        onView(withId(R.id.editTextTextPersonName)).perform(typeText("First"));
-        onView(withId(R.id.editTextTextPersonName3)).perform(typeText("Last"));
+        onView(withId(R.id.createUsername)).perform(typeText("First"));
+        //onView(withId(R.id.editTextTextPersonName3)).perform(typeText("Last"));
         onView(withId(R.id.editTextTextEmailAddress2)).perform(typeText("123@email.ca"));
         onView(withId(R.id.editTextTextPassword)).perform(typeText("password")).perform(ViewActions.closeSoftKeyboard());
 

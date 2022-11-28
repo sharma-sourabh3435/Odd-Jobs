@@ -7,6 +7,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class welcomeMainPage extends AppCompatActivity {
 
@@ -46,4 +47,6 @@ public class welcomeMainPage extends AppCompatActivity {
         Intent continueAsEmployer = new Intent(welcomeMainPage.this, WelcomeActivityEmployer.class);
         startActivity(continueAsEmployer);
     }
+
+
 }

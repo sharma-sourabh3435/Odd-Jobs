@@ -66,11 +66,11 @@ public class MainActivityTest {
 
     }
     @Test
-    public void checkifFirstAndLastNameVisible(){
+    public void checkifUsernameVisible(){
         init();
         onView(withId(R.id.buttonCreateAccount)).perform(click());
-        onView(withId(R.id.editTextTextPersonName)).check(matches(withText(R.string.EMPTY_STRING)));
-        onView(withId(R.id.editTextTextPersonName3)).check(matches(withText(R.string.EMPTY_STRING)));
+        onView(withId(R.id.createUsername)).check(matches(withText(R.string.EMPTY_STRING)));
+
 
     }
     @Test
