@@ -8,7 +8,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class WelcomeActivity extends AppCompatActivity {
+    private FloatingActionButton profileFab;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,6 +20,8 @@ public class WelcomeActivity extends AppCompatActivity {
         Toast myToast = Toast.makeText(this, "Welcome! You're Signed In As Employee", Toast.LENGTH_LONG);
         myToast.show();
 
+        profileFab = findViewById(R.id.profileBtn);
+        profileFab.setOnClickListener(view ->  startActivity(new Intent(getApplicationContext(), ProfilePage.class)));
         Button switchToLogin = findViewById(R.id.Logout);
         switchToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
