@@ -7,6 +7,8 @@
     android:background="#C8C7C7"
     tools:context=".WelcomeActivity">
 
+
+
     <Button
         android:id="@+id/Logout"
         android:layout_width="wrap_content"
@@ -122,6 +124,21 @@
 
     </LinearLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="330dp"
+        android:layout_marginTop="317dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="42dp"
+        android:clickable="true"
+        app:backgroundTint="#A5A4A5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
