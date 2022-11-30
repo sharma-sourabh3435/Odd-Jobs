@@ -30,7 +30,7 @@ import java.util.Locale;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
     Location location;
-    String latlong = new String("34,-122");
+    String latlong = new String("44.6476,63.5728");
     String city = new String("Halifax");
 
     private GoogleMap mMap;
@@ -43,8 +43,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        //getLocation();
-        //getAddress();
+//        getLocation();
+//        getAddress();
         this.captureIntent();
     }
 
@@ -56,7 +56,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        latlong = new String(longitude+", " +latitude);
 //    }
 
-//    // gets the users location
+////    // gets the users location
 //    protected void getAddress(){
 //        Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
 //        try {
