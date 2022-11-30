@@ -40,7 +40,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editTextJobTypePreference"
+            android:id="@+id/setName"
             android:layout_width="267dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -72,7 +72,7 @@
             android:textColor="@color/black" />
 
         <ListView
-            android:id="@+id/jobPreferencesLV"
+            android:id="@+id/jobPreferences"
             android:layout_width="match_parent"
             android:layout_height="301dp"
             android:layout_marginHorizontal="16dp"
