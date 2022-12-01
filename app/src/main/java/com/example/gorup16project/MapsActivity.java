@@ -30,7 +30,7 @@ import java.util.Locale;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
     Location location;
-    String latlong = new String("34,-122");
+    String latlong = new String("44.654685,-63.593184");
     String city = new String("Halifax");
 
     private GoogleMap mMap;
