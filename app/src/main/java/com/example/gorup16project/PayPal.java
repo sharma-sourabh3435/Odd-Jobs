@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 
@@ -33,7 +34,6 @@ public class PayPal extends AppCompatActivity {
 
     ActivityResultLauncher activityResultLauncher;
 
-    private static final int PAYPAL_REQUEST_CODE = 555;
     private static PayPalConfiguration config;
     Button btnPayNow;
     EditText edtAmount;
@@ -86,7 +86,6 @@ public class PayPal extends AppCompatActivity {
                         }
                     }
 
-                    //Toast.makeText(this, "Cancel", Toast.LENGTH_SHORT).show();
                 } else if (result.getResultCode() == PaymentActivity.RESULT_EXTRAS_INVALID){
                     Log.d(TAG,"Launcher Result Invalid");
                 } else if (result.getResultCode() == Activity.RESULT_CANCELED) {
@@ -100,7 +99,7 @@ public class PayPal extends AppCompatActivity {
         // Getting amount from editText
         amount = edtAmount.getText().toString();
         // Creating Paypal payment
-        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(String.valueOf(amount)),"CAD","Purchase Goods",PayPalPayment.PAYMENT_INTENT_SALE);
+        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(amount),"CAD","Purchase Goods",PayPalPayment.PAYMENT_INTENT_SALE);
         // Creating Paypal Payment activity intent
         Intent intent = new Intent(this, PaymentActivity.class);
         // Adding paypal configuration to the intent

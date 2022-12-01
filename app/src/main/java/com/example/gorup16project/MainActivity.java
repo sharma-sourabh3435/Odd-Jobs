@@ -110,13 +110,11 @@ public class MainActivity extends AppCompatActivity{
                      public void onComplete(@NonNull Task<AuthResult> task) {
                          if (task.isSuccessful()) {
 
-                             FirebaseUser currentUser = mAuth.getCurrentUser();
 
                              Toast.makeText(MainActivity.this, "User: "+firebaseDBRef.child("users").child("name").get() +"login successful",
                                      Toast.LENGTH_SHORT).show();
                              startActivity(new Intent(MainActivity.this, welcomeMainPage.class));
                              connectToFirebase();
-                             writeToDatabase();
 
                          }
                          else {
@@ -145,10 +143,7 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
-    private void switchToActivites2() {
-        Intent switchToCreate = new Intent(MainActivity.this, PayPal.class);
-        startActivity(switchToCreate);
-    }
+
 
     private void switchActivities() {
         Intent switchToCreate = new Intent(MainActivity.this, CreateAccount.class);
@@ -161,9 +156,7 @@ public class MainActivity extends AppCompatActivity{
         firebaseDBRef = firebaseDB.getReference();
     }
 
-    private void writeToDatabase(){
 
-    }
 
 
 }

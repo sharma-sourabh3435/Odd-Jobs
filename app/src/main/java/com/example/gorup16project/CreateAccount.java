@@ -25,11 +25,10 @@ import java.util.Map;
 
 public class CreateAccount extends AppCompatActivity {
     Button switchToLogin;
-    Button createAccount;
+    Button create;
     TextView email;
     TextView password;
     TextView username;
-    private Task<Void> dbRef;
     protected FirebaseAuth mAuth;
 
     @Override
@@ -38,17 +37,14 @@ public class CreateAccount extends AppCompatActivity {
         setContentView(R.layout.create_account);
 
         mAuth = FirebaseAuth.getInstance();
-        createAccount = findViewById(R.id.button);
+        create = findViewById(R.id.button);
         email = findViewById(R.id.editTextTextEmailAddress2);
         password = findViewById(R.id.editTextTextPassword);
         username = findViewById(R.id.createUsername);
-        String em = email.getText().toString();
-        String pass = password.getText().toString();
-        String user = username.getText().toString();
-        createAccount.setOnClickListener(new View.OnClickListener() {
+
+        create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //createUser();
                 String em = email.getText().toString();
                 String pass = password.getText().toString();
                 String user = username.getText().toString();
@@ -75,7 +71,6 @@ public class CreateAccount extends AppCompatActivity {
 
                             if(task.isSuccessful()) {
                                 writeToDB();
-                                FirebaseUser currentUser = mAuth.getCurrentUser();
                                 Toast.makeText(CreateAccount.this, "User: registered successfully",
                                         Toast.LENGTH_SHORT).show();
                                 //take user to login page
@@ -117,15 +112,14 @@ public class CreateAccount extends AppCompatActivity {
     }
 
     private void switchActivities() {
-        Intent switchToLogin = new Intent(CreateAccount.this, MainActivity.class);
-        startActivity(switchToLogin);
+        Intent switchLogin = new Intent(CreateAccount.this, MainActivity.class);
+        startActivity(switchLogin);
     }
 
     private void writeToDB(){
         Map<String, Object> map = new HashMap<>();
         String em = email.getText().toString();
         String user = username.getText().toString();
-        String pass = password.getText().toString();
         map.put("username",user);
         map.put("email",em);
         FirebaseDatabase.getInstance(Config.FIREBASE_URL).getReference()
