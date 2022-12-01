@@ -23,6 +23,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.UUID;
+
 /**
  * Instrumented test, which will execute on an Android device.
  *
@@ -62,28 +64,9 @@ public class CreateAccountEspressoTest {
         intended(hasComponent(MainActivity.class.getName()));
     }
 
-    @Test
-    public void createAccount() {
-        init();
-        onView(withId(R.id.createUsername)).perform(typeText("First"));
-        //onView(withId(R.id.editTextTextPersonName3)).perform(typeText("Last"));
-        onView(withId(R.id.editTextTextEmailAddress2)).perform(typeText("123@email.ca"));
-        onView(withId(R.id.editTextTextPassword)).perform(typeText("password")).perform(ViewActions.closeSoftKeyboard());
 
-        onView(withId(R.id.button)).perform(click());
 
-        intended(hasComponent(MainActivity.class.getName()));
-    }
 
-    @Test
-    public void createAccountAndLogin() {
-        init();
-        createAccount();
 
-        onView(withId(R.id.editTextTextEmailAddress3)).perform(typeText("123@email.ca"));
-        onView(withId(R.id.editTextTextPassword3)).perform(typeText("password"));
 
-        onView(withId(R.id.buttonLogin)).perform(click());
-        intended(hasComponent(WelcomeActivity.class.getName()));
-    }
 }

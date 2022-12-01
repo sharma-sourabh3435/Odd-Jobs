@@ -20,10 +20,10 @@ import org.junit.runner.RunWith;
 
 
 @RunWith(AndroidJUnit4.class)
-public class WelcomeActivityTest {
+public class ProfilePageTest {
 
     @Rule
-    public ActivityScenarioRule<WelcomeActivity> myRule = new ActivityScenarioRule<>(WelcomeActivity.class);
+    public ActivityScenarioRule<ProfilePage> myRule = new ActivityScenarioRule<>(ProfilePage.class);
 
     @AfterClass
     public static void tearDown() {
@@ -31,25 +31,10 @@ public class WelcomeActivityTest {
     }
 
     @Test
-    public void testLogout(){
+    public void backBTN(){
         init();
-        onView(withId(R.id.Logout)).perform(click());
-        intended(hasComponent(MainActivity.class.getName()));
+        onView(withId(R.id.backFromProfile)).perform(click());
+        intended(hasComponent(WelcomeActivity.class.getName()));
     }
 
-    @Test
-    public void testProfileBtn(){
-        init();
-        onView(withId(R.id.profileBtn)).perform(click());
-        intended(hasComponent(ProfilePage.class.getName()));
-
-    }
-
-    @Test
-    public void setPreferenceBtn(){
-        init();
-        onView(withId(R.id.setPreferences)).perform(click());
-        intended(hasComponent(SetPreferencesEmployee.class.getName()));
-
-    }
 }

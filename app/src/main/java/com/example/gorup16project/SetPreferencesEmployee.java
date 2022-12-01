@@ -7,7 +7,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,7 +15,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ResourceBundle;
 
 
 public class SetPreferencesEmployee extends AppCompatActivity {
@@ -34,7 +32,7 @@ public class SetPreferencesEmployee extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.preferences_employee);
 
-        Button goBack = findViewById(R.id.back2employee);
+        Button goBack = findViewById(R.id.backFromPreference);
         goBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

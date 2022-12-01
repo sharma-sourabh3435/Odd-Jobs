@@ -9,10 +9,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ProfilePage extends AppCompatActivity {
 
+    Button goBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_page);
+
+        goBack = findViewById(R.id.backFromProfile);
+        goBack.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), WelcomeActivity.class)));
 
         Button switchToLocation = findViewById(R.id.Location);
         switchToLocation.setOnClickListener(new View.OnClickListener() {
@@ -20,6 +25,8 @@ public class ProfilePage extends AppCompatActivity {
         public void onClick(View view) {
             switchActivities();
         }
+
+
     });
 
 
