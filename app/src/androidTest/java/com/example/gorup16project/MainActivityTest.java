@@ -82,6 +82,8 @@ public class MainActivityTest {
         intended(hasComponent(MainActivity.class.getName()));
     }
 
+
+
 }
 
 
