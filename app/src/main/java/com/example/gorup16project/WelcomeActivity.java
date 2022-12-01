@@ -11,11 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class WelcomeActivity extends AppCompatActivity {
-    private FloatingActionButton profileFab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FloatingActionButton profileFab;
+
         setContentView(R.layout.welcome_employee);
         Toast myToast = Toast.makeText(this, "Welcome! You're Signed In As Employee", Toast.LENGTH_LONG);
         myToast.show();

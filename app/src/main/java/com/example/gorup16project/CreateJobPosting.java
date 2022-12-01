@@ -20,7 +20,6 @@ import java.util.Map;
 
 public class CreateJobPosting extends AppCompatActivity {
 
-    private DatabaseReference firebaseDBRef;
     TextView title;
     TextView pay;
     TextView location;
