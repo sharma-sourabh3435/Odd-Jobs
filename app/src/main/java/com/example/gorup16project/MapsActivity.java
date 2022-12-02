@@ -1,90 +1,103 @@
 package com.example.gorup16project;
 
 
-import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.widget.Toast;
 
-import androidx.fragment.app.FragmentActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import com.example.gorup16project.databinding.ActivityMapsBinding;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
+import com.google.android.gms.tasks.Task;
 
 
-/*
- Google map citation
- Author: Masud Rahman
- URL: https://git.cs.dal.ca/masud/csci3130-cookbook
- */
 
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
-    Location location;
-    String latlong = new String("44.654685,-63.593184");
-    String city = new String("Halifax");
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
+    private static final Integer REQUEST_CODE = 255;
+    private SupportMapFragment mapFragment;
     private GoogleMap mMap;
+    private ActivityMapsBinding binding;
+    private FusedLocationProviderClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+
+        binding = ActivityMapsBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-        //getLocation();
-        //getAddress();
-        this.captureIntent();
+        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+
+        client = LocationServices.getFusedLocationProviderClient(this);
+
+        getCurrentLocation();
+
     }
 
-//    // gets the users location
-//    protected void getLocation(){
-//        location = new Location("");
-//        double longitude = location.getLongitude();
-//        double latitude = location.getLatitude();
-//        latlong = new String(longitude+", " +latitude);
-//    }
+    private void getCurrentLocation() {
 
-//    // gets the users location
-//    protected void getAddress(){
-//        Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
-//        try {
-//            List<Address> listAddresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-//            if (null != listAddresses && listAddresses.size() > 0) {
-//                city = listAddresses.get(0).getAdminArea();
-//
-//            }
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-
-
-
-    protected void captureIntent() {
-        try {
-            Intent latlongItent = getIntent();
-            if (latlongItent != null) {
-                if (latlongItent.hasExtra("taskLocation"))
-                    this.latlong = latlongItent.getStringExtra("taskLocation");
-                if (latlongItent.hasExtra("city"))
-                    this.city = latlongItent.getStringExtra("city");
+        // permission check
+        if (ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        Task<Location> task = client.getLastLocation();
+        task.addOnSuccessListener(location -> {
+            if (location != null) {
+                mapFragment.getMapAsync(googleMap -> {
+                    LatLng latlng = new LatLng(location.getLatitude(), location.getLongitude());
+                    MarkerOptions markerOptions = new MarkerOptions().position(latlng).title("Halifax");
+                    // adding marker to show the users location
+                    googleMap.addMarker(markerOptions).showInfoWindow();
+                    // zooming in
+                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlng, 15));
+                });
             }
-        } catch (Exception exc) {
-            exc.printStackTrace();
+        });
+    }
+
+    /*
+    google map code citation
+ Author: Shakuntala Khatri
+ ULR: https://git.cs.dal.ca/prof3130/google-map-advance-demo/-/blob/master/app/src/main/java/com/myapp/myapplication/MapsActivity.java
+ */
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_CODE) {
+            // will allow the user to get the current location!
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                getCurrentLocation();
+            } else {
+                // will not let the user get the current location
+                Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -102,16 +115,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        String[] parts = latlong.split(",");
-        double latitude = Double.parseDouble(parts[0].trim());
-        double longitude = Double.parseDouble(parts[1].trim());
-
-        LatLng itemLocation = new LatLng(latitude, longitude);
-        mMap.addMarker(new MarkerOptions().position(itemLocation).title(this.city));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(itemLocation));
+        LatLng sydney = new LatLng(-34, 151);
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
+
+
 }
