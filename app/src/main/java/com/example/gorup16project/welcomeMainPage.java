@@ -30,20 +30,20 @@ public class welcomeMainPage extends AppCompatActivity {
 
         //button for employee page
         Button continueAsEmployee = findViewById(R.id.toEmployeePage);
-        continueAsEmployee.setOnClickListener(view -> switchActivities1());
+        continueAsEmployee.setOnClickListener(view -> switchToWelcomeEmployee());
 
         //button for employer page
         Button continueAsEmployer = findViewById(R.id.toEmployerPage);
-        continueAsEmployer.setOnClickListener(view -> switchActivities2());
+        continueAsEmployer.setOnClickListener(view -> switchToWelcomeEmployer());
     }
 
     //switch to employee's login page
-    private void switchActivities1(){
+    private void switchToWelcomeEmployee(){
         Intent continueAsEmployee = new Intent(welcomeMainPage.this, WelcomeActivity.class);
         startActivity(continueAsEmployee);
     }
     //switch to employer's login page
-    private void switchActivities2(){
+    private void switchToWelcomeEmployer(){
         Intent continueAsEmployer = new Intent(welcomeMainPage.this, WelcomeActivityEmployer.class);
         startActivity(continueAsEmployer);
     }

@@ -27,7 +27,7 @@ public class WelcomeActivity extends AppCompatActivity {
         switchToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switchActivities();
+                switchToLoginPage();
             }
         });
 
@@ -35,17 +35,17 @@ public class WelcomeActivity extends AppCompatActivity {
         switchToPreferences.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switchActivities2();
+                switchToUserPrefs();
             }
         });
     }
 
-    private void switchActivities() {
+    private void switchToLoginPage() {
         Intent switchToLogin = new Intent(WelcomeActivity.this, MainActivity.class);
         startActivity(switchToLogin);
     }
 
-    private void switchActivities2() {
+    private void switchToUserPrefs() {
         Intent switchToPreferences = new Intent(WelcomeActivity.this, SetPreferencesEmployee.class);
         startActivity(switchToPreferences);
     }

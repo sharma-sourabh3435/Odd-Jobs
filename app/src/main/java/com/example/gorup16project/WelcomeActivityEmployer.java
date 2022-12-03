@@ -21,7 +21,7 @@ public class WelcomeActivityEmployer extends AppCompatActivity {
         switchToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switchActivities();
+                switchToLoginPage();
             }
         });
         Button switchToCreateJob = findViewById(R.id.createJobBtn);
@@ -33,7 +33,7 @@ public class WelcomeActivityEmployer extends AppCompatActivity {
         });
     }
 
-    private void switchActivities() {
+    private void switchToLoginPage() {
         Intent switchToLogin = new Intent(WelcomeActivityEmployer.this,
                 MainActivity.class);
         startActivity(switchToLogin);

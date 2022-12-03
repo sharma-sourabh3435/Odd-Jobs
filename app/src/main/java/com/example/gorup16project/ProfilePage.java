@@ -23,17 +23,13 @@ public class ProfilePage extends AppCompatActivity {
         switchToLocation.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            switchActivities();
+            switchToMaps();
         }
-
 
     });
 
-
-
 }
-
-    private void switchActivities() {
+    private void switchToMaps() {
         Intent switchToCreate = new Intent(ProfilePage.this, MapsActivity.class);
         startActivity(switchToCreate);
     }
