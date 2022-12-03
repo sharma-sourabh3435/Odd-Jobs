@@ -49,20 +49,7 @@ public class CreateAccount extends AppCompatActivity {
                 String pass = password.getText().toString();
                 String user = username.getText().toString();
 
-                if (TextUtils.isEmpty(em)) {
-                    email.setError("Email can not be empty");
-                    email.requestFocus();
-                }
-
-                else if(TextUtils.isEmpty(pass)) {
-                    password.setError("Password can not be empty");
-                    password.requestFocus();
-                }else if(TextUtils.isEmpty(user)) {
-                    username.setError("Username can not be empty");
-                    username.requestFocus();
-                }
-
-                else {
+                if (validationHandler(em, pass, user)){
                     mAuth.createUserWithEmailAndPassword(em, pass).
                             addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
@@ -114,6 +101,43 @@ public class CreateAccount extends AppCompatActivity {
     private void switchActivities() {
         Intent switchLogin = new Intent(CreateAccount.this, MainActivity.class);
         startActivity(switchLogin);
+    }
+
+    private boolean validationHandler(String em, String pass, String user){
+        if(!validateEmail(em)){
+            return false;
+        } else if(!validatePass(pass)){
+            return false;
+        } else if(!validateUser(user)){
+            return false;
+        } else {return true;}
+    }
+
+    private boolean validateEmail(String em){
+        if (TextUtils.isEmpty(em)) {
+            email.setError("Email can not be empty");
+            email.requestFocus();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validatePass(String pass){
+        if(TextUtils.isEmpty(pass)) {
+            password.setError("Password can not be empty");
+            password.requestFocus();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateUser(String user){
+        if(TextUtils.isEmpty(user)) {
+            username.setError("Username can not be empty");
+            username.requestFocus();
+            return false;
+        }
+        return true;
     }
 
     private void writeToDB(){
