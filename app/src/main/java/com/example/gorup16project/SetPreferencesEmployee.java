@@ -2,7 +2,6 @@ package com.example.gorup16project;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,12 +32,9 @@ public class SetPreferencesEmployee extends AppCompatActivity {
         setContentView(R.layout.preferences_employee);
 
         Button goBack = findViewById(R.id.backFromPreference);
-        goBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent backToWelcome = new Intent(SetPreferencesEmployee.this, WelcomeActivity.class);
-                startActivity(backToWelcome);
-            }
+        goBack.setOnClickListener(view -> {
+            Intent backToWelcome = new Intent(SetPreferencesEmployee.this, WelcomeActivity.class);
+            startActivity(backToWelcome);
         });
 
          addPreference = findViewById(R.id.addPreference);
@@ -46,35 +42,29 @@ public class SetPreferencesEmployee extends AppCompatActivity {
 
 
         ArrayList<String> typePrefList = new ArrayList<>();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, typePrefList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, typePrefList);
         jobPreferencesLV.setAdapter(adapter);
 
 
         //add preferred job type to list
-        addPreference.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                 jobTypePrefEdit = findViewById(R.id.setName);
-                 userTypePref = jobTypePrefEdit.getText().toString();
+        addPreference.setOnClickListener(view -> {
+             jobTypePrefEdit = findViewById(R.id.setName);
+             userTypePref = jobTypePrefEdit.getText().toString();
 
-                writeToDB();
-                if(!userTypePref.isEmpty()){
-                    typePrefList.add(userTypePref);
-                    adapter.notifyDataSetChanged();
+            writeToDB();
+            if(!userTypePref.isEmpty()){
+                typePrefList.add(userTypePref);
+                adapter.notifyDataSetChanged();
 
-                    jobTypePrefEdit.setText("");
+                jobTypePrefEdit.setText("");
 
-                }
             }
         });
 
         Button clearPreferences = findViewById(R.id.clearPreferences);
-        clearPreferences.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                typePrefList.clear();
-                adapter.notifyDataSetChanged();
-            }
+        clearPreferences.setOnClickListener(view -> {
+            typePrefList.clear();
+            adapter.notifyDataSetChanged();
         });
 
     }

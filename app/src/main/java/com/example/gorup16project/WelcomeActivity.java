@@ -2,7 +2,6 @@ package com.example.gorup16project;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -29,22 +28,12 @@ public class WelcomeActivity extends AppCompatActivity {
         profileFab = findViewById(R.id.profileBtn);
         profileFab.setOnClickListener(view ->  startActivity(new Intent(getApplicationContext(), ProfilePage.class)));
         Button switchToLogin = findViewById(R.id.Logout);
-        switchToLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switchActivities();
-            }
-        });
+        switchToLogin.setOnClickListener(view -> switchToLoginPage());
 
         Button switchToPreferences = findViewById(R.id.setPreferences);
-        switchToPreferences.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switchActivities2();
-            }
-        });
+        switchToPreferences.setOnClickListener(view -> switchToUserPrefs());
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.re1);
+        mRecyclerView = findViewById(R.id.re1);
         new firebaseDB().readJobs(new firebaseDB.DataStatus() {
             @Override
             public void DataIsLoaded(List<jobs> jobs, List<String> keys) {
@@ -68,12 +57,12 @@ public class WelcomeActivity extends AppCompatActivity {
         });
     }
 
-    private void switchActivities() {
+    private void switchToLoginPage() {
         Intent switchToLogin = new Intent(WelcomeActivity.this, MainActivity.class);
         startActivity(switchToLogin);
     }
 
-    private void switchActivities2() {
+    private void switchToUserPrefs() {
         Intent switchToPreferences = new Intent(WelcomeActivity.this, SetPreferencesEmployee.class);
         startActivity(switchToPreferences);
     }

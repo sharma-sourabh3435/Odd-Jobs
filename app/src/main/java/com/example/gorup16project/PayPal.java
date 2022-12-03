@@ -4,18 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 
 import static android.content.ContentValues.TAG;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -56,41 +52,34 @@ public class PayPal extends AppCompatActivity {
         // initiallizing Activity Launcher
         initializeActivityLauncher();
 
-        btnPayNow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                processPayment();
-            }
-        });
+        btnPayNow.setOnClickListener(v -> processPayment());
     }
 
     private void initializeActivityLauncher() {
         // Initialize result launcher
-        activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-            @Override
-            public void onActivityResult(ActivityResult result) {
-                if (result.getResultCode() == RESULT_OK) {
-                    PaymentConfirmation confirmation = result.getData().getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
-                    if (confirmation != null) {
-                        try {
-                            // Getting the payment details
-                            String paymentDetails = confirmation.toJSONObject().toString(4);
-                            // on below line we are extracting json response and displaying it in a text view.
-                            JSONObject payObj = new JSONObject(paymentDetails);
-                            String payID = payObj.getJSONObject("response").getString("id");
-                            String state = payObj.getJSONObject("response").getString("state");
-                            paymentTV.setText("Payment " + state + "\n with payment id is " + payID);
-                        } catch (JSONException e) {
-                            // handling json exception on below line
-                            Log.e("Error", "an extremely unlikely failure occurred: ", e);
-                        }
+        activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == RESULT_OK) {
+                assert result.getData() != null;
+                PaymentConfirmation confirmation = result.getData().getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
+                if (confirmation != null) {
+                    try {
+                        // Getting the payment details
+                        String paymentDetails = confirmation.toJSONObject().toString(4);
+                        // on below line we are extracting json response and displaying it in a text view.
+                        JSONObject payObj = new JSONObject(paymentDetails);
+                        String payID = payObj.getJSONObject("response").getString("id");
+                        String state = payObj.getJSONObject("response").getString("state");
+                        paymentTV.setText("Payment " + state + "\n with payment id is " + payID);
+                    } catch (JSONException e) {
+                        // handling json exception on below line
+                        Log.e("Error", "an extremely unlikely failure occurred: ", e);
                     }
-
-                } else if (result.getResultCode() == PaymentActivity.RESULT_EXTRAS_INVALID){
-                    Log.d(TAG,"Launcher Result Invalid");
-                } else if (result.getResultCode() == Activity.RESULT_CANCELED) {
-                    Log.d(TAG, "Launcher Result Cancelled");
                 }
+
+            } else if (result.getResultCode() == PaymentActivity.RESULT_EXTRAS_INVALID){
+                Log.d(TAG,"Launcher Result Invalid");
+            } else if (result.getResultCode() == Activity.RESULT_CANCELED) {
+                Log.d(TAG, "Launcher Result Cancelled");
             }
         });
     }

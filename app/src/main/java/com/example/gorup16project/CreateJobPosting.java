@@ -43,12 +43,7 @@ public class CreateJobPosting extends AppCompatActivity {
         goBack.setOnClickListener(view -> backToEmployer());
 
         Button  logout = findViewById(R.id.logoutOfPosting);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                logoutOfPosting();
-            }
-        });
+        logout.setOnClickListener(view -> logoutOfPosting());
         postJob.setOnClickListener(view -> writeToDB());
 
     }

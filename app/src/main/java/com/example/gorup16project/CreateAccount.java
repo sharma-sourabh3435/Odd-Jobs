@@ -1,27 +1,21 @@
 package com.example.gorup16project;
 
-import android.os.Bundle;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class CreateAccount extends AppCompatActivity {
     Button switchToLogin;
@@ -42,32 +36,14 @@ public class CreateAccount extends AppCompatActivity {
         password = findViewById(R.id.editTextTextPassword);
         username = findViewById(R.id.createUsername);
 
-        create.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String em = email.getText().toString();
-                String pass = password.getText().toString();
-                String user = username.getText().toString();
+        create.setOnClickListener(view -> {
+            String em = email.getText().toString();
+            String pass = password.getText().toString();
+            String user = username.getText().toString();
 
-                if (TextUtils.isEmpty(em)) {
-                    email.setError("Email can not be empty");
-                    email.requestFocus();
-                }
-
-                else if(TextUtils.isEmpty(pass)) {
-                    password.setError("Password can not be empty");
-                    password.requestFocus();
-                }else if(TextUtils.isEmpty(user)) {
-                    username.setError("Username can not be empty");
-                    username.requestFocus();
-                }
-
-                else {
-                    mAuth.createUserWithEmailAndPassword(em, pass).
-                            addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
+            if (validationHandler(em, pass, user)){
+                mAuth.createUserWithEmailAndPassword(em, pass).
+                        addOnCompleteListener(task -> {
 
                             if(task.isSuccessful()) {
                                 writeToDB();
@@ -79,23 +55,16 @@ public class CreateAccount extends AppCompatActivity {
                             }
                             else {
                                 Toast.makeText(CreateAccount.this, "Boo" +
-                                                task.getException().getMessage(),
+                                                Objects.requireNonNull(task.getException()).getMessage(),
                                         Toast.LENGTH_SHORT).show();
                             }
-                        }
-                    });
-                }
-
+                        });
             }
+
         });
 
         switchToLogin = findViewById(R.id.backToLoginButton);
-        switchToLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switchActivities();
-            }
-        });
+        switchToLogin.setOnClickListener(view -> switchActivities());
 
     }
 
@@ -114,6 +83,41 @@ public class CreateAccount extends AppCompatActivity {
     private void switchActivities() {
         Intent switchLogin = new Intent(CreateAccount.this, MainActivity.class);
         startActivity(switchLogin);
+    }
+
+    private boolean validationHandler(String em, String pass, String user){
+        if(!validateEmail(em)){
+            return false;
+        } else if(!validatePass(pass)){
+            return false;
+        } else return validateUser(user);
+    }
+
+    private boolean validateEmail(String em){
+        if (TextUtils.isEmpty(em)) {
+            email.setError("Email can not be empty");
+            email.requestFocus();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validatePass(String pass){
+        if(TextUtils.isEmpty(pass)) {
+            password.setError("Password can not be empty");
+            password.requestFocus();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateUser(String user){
+        if(TextUtils.isEmpty(user)) {
+            username.setError("Username can not be empty");
+            username.requestFocus();
+            return false;
+        }
+        return true;
     }
 
     private void writeToDB(){

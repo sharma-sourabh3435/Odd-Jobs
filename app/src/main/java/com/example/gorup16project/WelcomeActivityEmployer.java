@@ -2,7 +2,6 @@ package com.example.gorup16project;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -18,22 +17,12 @@ public class WelcomeActivityEmployer extends AppCompatActivity {
         myToast.show();
 
         Button switchToLogin = findViewById(R.id.Logout);
-        switchToLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switchActivities();
-            }
-        });
+        switchToLogin.setOnClickListener(view -> switchToLoginPage());
         Button switchToCreateJob = findViewById(R.id.createJobBtn);
-        switchToCreateJob.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switchToCreatePosting();
-            }
-        });
+        switchToCreateJob.setOnClickListener(view -> switchToCreatePosting());
     }
 
-    private void switchActivities() {
+    private void switchToLoginPage() {
         Intent switchToLogin = new Intent(WelcomeActivityEmployer.this,
                 MainActivity.class);
         startActivity(switchToLogin);
