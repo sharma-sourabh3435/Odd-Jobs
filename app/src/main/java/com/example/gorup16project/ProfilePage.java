@@ -20,13 +20,7 @@ public class ProfilePage extends AppCompatActivity {
         goBack.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), WelcomeActivity.class)));
 
         Button switchToLocation = findViewById(R.id.Location);
-        switchToLocation.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            switchToMaps();
-        }
-
-    });
+        switchToLocation.setOnClickListener(view -> switchToMaps());
 
 }
     private void switchToMaps() {

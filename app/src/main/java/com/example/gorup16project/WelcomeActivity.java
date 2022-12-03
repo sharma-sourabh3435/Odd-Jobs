@@ -2,7 +2,6 @@ package com.example.gorup16project;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -24,20 +23,10 @@ public class WelcomeActivity extends AppCompatActivity {
         profileFab = findViewById(R.id.profileBtn);
         profileFab.setOnClickListener(view ->  startActivity(new Intent(getApplicationContext(), ProfilePage.class)));
         Button switchToLogin = findViewById(R.id.Logout);
-        switchToLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switchToLoginPage();
-            }
-        });
+        switchToLogin.setOnClickListener(view -> switchToLoginPage());
 
         Button switchToPreferences = findViewById(R.id.setPreferences);
-        switchToPreferences.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switchToUserPrefs();
-            }
-        });
+        switchToPreferences.setOnClickListener(view -> switchToUserPrefs());
     }
 
     private void switchToLoginPage() {

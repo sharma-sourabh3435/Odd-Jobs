@@ -10,7 +10,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import com.example.gorup16project.databinding.ActivityMapsBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -30,15 +29,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private static final Integer REQUEST_CODE = 255;
     private SupportMapFragment mapFragment;
-    private GoogleMap mMap;
-    private ActivityMapsBinding binding;
     private FusedLocationProviderClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityMapsBinding.inflate(getLayoutInflater());
+        com.example.gorup16project.databinding.ActivityMapsBinding binding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -116,12 +113,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
-        mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 
 

@@ -69,25 +69,17 @@ public class MainActivity extends AppCompatActivity{
         firebaseDBRef = firebaseDB.getReference();
 
         //Check and Uncheck the password on login page
-        showcheck_btn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked) {
-                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                } else {
-                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                }
+        showcheck_btn.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(isChecked) {
+                password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            } else {
+                password.setTransformationMethod(PasswordTransformationMethod.getInstance());
             }
         });
 
         //change between login and create account page
         switchToSecondActivity = findViewById(R.id.buttonCreateAccount);
-        switchToSecondActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switchActivities();
-            }
-        });
+        switchToSecondActivity.setOnClickListener(view -> switchActivities());
 
          loginButton = findViewById(R.id.buttonLogin);
          loginButton.setOnClickListener(view -> {
@@ -96,25 +88,22 @@ public class MainActivity extends AppCompatActivity{
 
              if (validationHandler(em, pass)){
                  mAuth.signInWithEmailAndPassword(em, pass).addOnCompleteListener(this,
-                         new OnCompleteListener<AuthResult>() {
-                     @Override
-                     public void onComplete(@NonNull Task<AuthResult> task) {
-                         if (task.isSuccessful()) {
+                         task -> {
+                             if (task.isSuccessful()) {
 
 
-                             Toast.makeText(MainActivity.this, "User: "+firebaseDBRef.child("users").child("name").get() +"login successful",
-                                     Toast.LENGTH_SHORT).show();
-                             startActivity(new Intent(MainActivity.this, welcomeMainPage.class));
-                             connectToFirebase();
+                                 Toast.makeText(MainActivity.this, "User: "+firebaseDBRef.child("users").child("name").get() +"login successful",
+                                         Toast.LENGTH_SHORT).show();
+                                 startActivity(new Intent(MainActivity.this, welcomeMainPage.class));
+                                 connectToFirebase();
 
-                         }
-                         else {
-                             Toast.makeText(MainActivity.this, "Boo" +
-                                             Objects.requireNonNull(task.getException()).getMessage(),
-                                     Toast.LENGTH_SHORT).show();
-                         }
-                     }
-                 });
+                             }
+                             else {
+                                 Toast.makeText(MainActivity.this, "Boo" +
+                                                 Objects.requireNonNull(task.getException()).getMessage(),
+                                         Toast.LENGTH_SHORT).show();
+                             }
+                         });
              }
          });
 
@@ -150,9 +139,7 @@ public class MainActivity extends AppCompatActivity{
     private boolean validationHandler(String em, String pass){
         if(!validateEmail(em)){
             return false;
-        } else if(!validatePass(pass)){
-            return false;
-        } else {return true;}
+        } else return validatePass(pass);
     }
 
     private boolean validateEmail(String em){

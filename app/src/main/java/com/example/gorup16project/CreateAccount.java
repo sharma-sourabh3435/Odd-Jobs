@@ -1,23 +1,17 @@
 package com.example.gorup16project;
 
-import android.os.Bundle;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
@@ -42,19 +36,14 @@ public class CreateAccount extends AppCompatActivity {
         password = findViewById(R.id.editTextTextPassword);
         username = findViewById(R.id.createUsername);
 
-        create.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String em = email.getText().toString();
-                String pass = password.getText().toString();
-                String user = username.getText().toString();
+        create.setOnClickListener(view -> {
+            String em = email.getText().toString();
+            String pass = password.getText().toString();
+            String user = username.getText().toString();
 
-                if (validationHandler(em, pass, user)){
-                    mAuth.createUserWithEmailAndPassword(em, pass).
-                            addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
+            if (validationHandler(em, pass, user)){
+                mAuth.createUserWithEmailAndPassword(em, pass).
+                        addOnCompleteListener(task -> {
 
                             if(task.isSuccessful()) {
                                 writeToDB();
@@ -69,20 +58,13 @@ public class CreateAccount extends AppCompatActivity {
                                                 task.getException().getMessage(),
                                         Toast.LENGTH_SHORT).show();
                             }
-                        }
-                    });
-                }
-
+                        });
             }
+
         });
 
         switchToLogin = findViewById(R.id.backToLoginButton);
-        switchToLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switchActivities();
-            }
-        });
+        switchToLogin.setOnClickListener(view -> switchActivities());
 
     }
 
@@ -108,9 +90,7 @@ public class CreateAccount extends AppCompatActivity {
             return false;
         } else if(!validatePass(pass)){
             return false;
-        } else if(!validateUser(user)){
-            return false;
-        } else {return true;}
+        } else return validateUser(user);
     }
 
     private boolean validateEmail(String em){
