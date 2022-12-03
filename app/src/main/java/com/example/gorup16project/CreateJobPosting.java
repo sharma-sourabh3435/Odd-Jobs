@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ public class CreateJobPosting extends AppCompatActivity {
     TextView location;
     TextView duration;
     Button postJob;
+    //Switch urgent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class CreateJobPosting extends AppCompatActivity {
         location = findViewById(R.id.jobLocation);
         duration = findViewById(R.id.jobDuration);
         postJob=findViewById(R.id.postJobBtn);
+        //urgent = findViewById(R.id.switch1);
 
         Button goBack = findViewById(R.id.back2employer);
         goBack.setOnClickListener(view -> backToEmployer());
@@ -65,10 +68,12 @@ public class CreateJobPosting extends AppCompatActivity {
         String ttle = title.getText().toString();
         String py = pay.getText().toString();
         String loc = location.getText().toString();
+        //boolean urgency = urgent.isChecked();
         map.put("title",ttle);
         map.put("pay",py);
         map.put("duration",dur);
         map.put("location",loc);
+        //map.put("Urgent", urgency);
         FirebaseDatabase.getInstance(Config.FIREBASE_URL).getReference()
                 .child(Config.JOB_STRING)
                 .push()
