@@ -94,16 +94,7 @@ public class MainActivity extends AppCompatActivity{
              String em = email.getText().toString();
              String pass = password.getText().toString();
 
-             if (TextUtils.isEmpty(em)) {
-                 email.setError("Email can not be empty");
-                 email.requestFocus();
-             }
-
-             else if(TextUtils.isEmpty(pass)) {
-                 password.setError("Password can not be empty");
-                 password.requestFocus();
-             }
-             else {
+             if (validationHandler(em, pass)){
                  mAuth.signInWithEmailAndPassword(em, pass).addOnCompleteListener(this,
                          new OnCompleteListener<AuthResult>() {
                      @Override
@@ -154,6 +145,32 @@ public class MainActivity extends AppCompatActivity{
     private void connectToFirebase(){
         firebaseDB = FirebaseDatabase.getInstance(Config.FIREBASE_URL);
         firebaseDBRef = firebaseDB.getReference();
+    }
+
+    private boolean validationHandler(String em, String pass){
+        if(!validateEmail(em)){
+            return false;
+        } else if(!validatePass(pass)){
+            return false;
+        } else {return true;}
+    }
+
+    private boolean validateEmail(String em){
+        if (TextUtils.isEmpty(em)) {
+            email.setError("Email can not be empty");
+            email.requestFocus();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validatePass(String pass){
+        if(TextUtils.isEmpty(pass)) {
+            password.setError("Password can not be empty");
+            password.requestFocus();
+            return false;
+        }
+        return true;
     }
 
 
