@@ -37,4 +37,14 @@ public class ProfilePageTest {
         intended(hasComponent(WelcomeActivity.class.getName()));
     }
 
+    @Test
+    public void googleMapsBTN(){
+        init();
+        onView(withId(R.id.backFromProfile)).perform(click());
+        intended(hasComponent(MainActivity.class.getName()));
+    }
+
+
+
+
 }
