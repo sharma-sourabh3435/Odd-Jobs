@@ -3,7 +3,6 @@ package com.example.gorup16project;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class CreateAccount extends AppCompatActivity {
     Button switchToLogin;
@@ -55,7 +55,7 @@ public class CreateAccount extends AppCompatActivity {
                             }
                             else {
                                 Toast.makeText(CreateAccount.this, "Boo" +
-                                                task.getException().getMessage(),
+                                                Objects.requireNonNull(task.getException()).getMessage(),
                                         Toast.LENGTH_SHORT).show();
                             }
                         });

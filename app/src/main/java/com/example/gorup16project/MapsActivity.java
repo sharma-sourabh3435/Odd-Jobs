@@ -22,7 +22,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.Task;
 
-
+import java.util.Objects;
 
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -70,7 +70,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     LatLng latlng = new LatLng(location.getLatitude(), location.getLongitude());
                     MarkerOptions markerOptions = new MarkerOptions().position(latlng).title("Halifax");
                     // adding marker to show the users location
-                    googleMap.addMarker(markerOptions).showInfoWindow();
+                    Objects.requireNonNull(googleMap.addMarker(markerOptions)).showInfoWindow();
                     // zooming in
                     googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlng, 15));
                 });
