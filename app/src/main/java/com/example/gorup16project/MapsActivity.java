@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.gorup16project.databinding.ActivityMapsBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -43,7 +44,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         client = LocationServices.getFusedLocationProviderClient(this);
 
-        getCurrentLocation();
+        //checking if permision has been granted before accessing location
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            getCurrentLocation();
+        } else {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
+        }
+
+
 
     }
 
