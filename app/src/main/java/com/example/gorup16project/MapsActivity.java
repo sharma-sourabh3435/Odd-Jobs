@@ -31,6 +31,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private static final Integer REQUEST_CODE = 255;
     private SupportMapFragment mapFragment;
     private FusedLocationProviderClient client;
+    private double longitude;
+    private double latitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +79,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 mapFragment.getMapAsync(googleMap -> {
                     LatLng latlng = new LatLng(location.getLatitude(), location.getLongitude());
                     MarkerOptions markerOptions = new MarkerOptions().position(latlng).title("Halifax");
+                    longitude = latlng.longitude;
+                    latitude = latlng.latitude;
                     // adding marker to show the users location
                     Objects.requireNonNull(googleMap.addMarker(markerOptions)).showInfoWindow();
                     // zooming in
@@ -85,6 +89,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
     }
+
+    public double getLongitude(){
+        return longitude;
+    }
+
+    public double getLatitude(){
+        return latitude;
+    }
+
+
 
     /*
     google map code citation
